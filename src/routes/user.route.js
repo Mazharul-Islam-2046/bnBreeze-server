@@ -22,7 +22,7 @@ userRouter.route("/updateUser").put(verifyJWT,updateUser);
 userRouter.route("/auth/logout").post(verifyJWT,logoutUser);
 userRouter.route("/getAllUsers").get(verifyJWT,getAllUsers);
 userRouter.route("/getUserById/:id").get(verifyJWT,getUserById);
-
+userRouter.route("/getUserByEmail/:email").get(verifyJWT,getUserByEmail);
 
 export default userRouter;
 

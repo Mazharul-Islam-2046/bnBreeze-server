@@ -20,9 +20,13 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       match: [/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Please enter a valid email"],
     },
+    isGoogleSignIn: {
+      type: Boolean,
+      default: false,
+    },
     password: {
       type: String,
-      required: [true, "Password is required"],
+      required: [function () { return !this.isGoogleSignIn; }, "Password is required for email/password sign-in"],
       match: [
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/,
         "Password must be at least 8 characters long and include one uppercase letter, one lowercase letter, one number, and one special character"

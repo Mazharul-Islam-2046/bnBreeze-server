@@ -172,6 +172,16 @@ class UserService {
 
         return user;
     }
+
+
+
+    async getUserByEmailService (email) {
+        const user = await User.findOne({ email }).select("-password -refreshToken").lean();
+        if (!user) {
+            throw new ApiError(404, "User not found");
+        }
+        return user;
+    }
 }
 
 export const userService = new UserService();
