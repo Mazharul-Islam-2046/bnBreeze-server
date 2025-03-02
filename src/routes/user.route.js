@@ -5,7 +5,8 @@ import {
     updateUser,
     logoutUser,
     getAllUsers,
-    getUserById
+    getUserById,
+    getUserByEmail
 } from "../controllers/user.controller.js";
 import {verifyJWT} from "../middlewares/auth.middleware.js"
 
